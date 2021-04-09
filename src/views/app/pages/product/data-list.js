@@ -57,6 +57,7 @@ const DataListPages = ({ match }) => {
 
   useEffect(() => {
     async function fetchData() {
+      console.log("Selected option",selectedOrderOption.column);
       axios
         .get(
           `${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`
