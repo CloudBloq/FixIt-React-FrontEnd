@@ -18,7 +18,7 @@ const getIndex = (value, arr, prop) => {
   return -1;
 };
 
-const apiUrl = `${servicePath}/cakes/paging`;
+const apiUrl = `${servicePath}/services`;
 
 const orderOptions = [
   { column: 'title', label: 'Product Name' },
@@ -46,7 +46,7 @@ const DataListPages = ({ match }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [totalItemCount, setTotalItemCount] = useState(0);
   const [totalPage, setTotalPage] = useState(1);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('0');
   const [selectedItems, setSelectedItems] = useState([]);
   const [items, setItems] = useState([]);
   const [lastChecked, setLastChecked] = useState(null);
@@ -60,7 +60,7 @@ const DataListPages = ({ match }) => {
       console.log("Selected option",selectedOrderOption.column);
       axios
         .get(
-          `${apiUrl}?pageSize=${selectedPageSize}&currentPage=${currentPage}&orderBy=${selectedOrderOption.column}&search=${search}`
+          `${apiUrl}/${currentPage},${selectedPageSize},${selectedOrderOption.column},${search}`
         )
         .then((res) => {
           return res.data;
@@ -68,8 +68,8 @@ const DataListPages = ({ match }) => {
         .then((data) => {
           setTotalPage(data.totalPage);
           setItems(
-            data.data.map((x) => {
-              return { ...x, img: x.img.replace('img/', 'img/products/') };
+            data.map((x) => {
+              return { ...x};
             })
           );
           setSelectedItems([]);
@@ -192,6 +192,7 @@ const DataListPages = ({ match }) => {
           toggleModal={() => setModalOpen(!modalOpen)}
           categories={categories}
         />
+
         <ListPageListing
           items={items}
           displayMode={displayMode}

@@ -38,7 +38,7 @@ export const currentUser = {
 export const adminRoot = '/app';
 export const buyUrl = 'https://1.envato.market/k4z0';
 export const searchPath = `${adminRoot}/pages/miscellaneous/search`;
-export const servicePath = 'https://api.coloredstrategies.com';
+export const servicePath = 'http://localhost:5000/api';
 
 export const themeColorStorageKey = '__theme_selected_color';
 export const isMultiColorActive = true;

@@ -38,7 +38,7 @@ const ListPageListing = ({
         if (displayMode === 'thumblist') {
           return (
             <ThumbListView
-              key={product.id}
+              key={product.serviceId}
               product={product}
               isSelect={selectedItems.includes(product.id)}
               collect={collect}
@@ -48,7 +48,7 @@ const ListPageListing = ({
         }
         return (
           <DataListView
-            key={product.id}
+            key={product.serviceId}
             product={product}
             isSelect={selectedItems.includes(product.id)}
             onCheckItem={onCheckItem}

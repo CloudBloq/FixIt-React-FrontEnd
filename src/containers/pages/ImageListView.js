@@ -25,15 +25,15 @@ const ImageListView = ({ product, isSelect, collect, onCheckItem }) => {
           })}
         >
           <div className="position-relative">
-            <NavLink to={`?p=${product.id}`} className="w-40 w-sm-100">
-              <CardImg top alt={product.title} src={product.img} />
+            <NavLink to={`?p=${product.serviceId}`} className="w-40 w-sm-100">
+              <CardImg top alt={product.serviceName} src={product.serviceId} />
             </NavLink>
             <Badge
               color={product.statusColor}
               pill
               className="position-absolute badge-top-left"
             >
-              {product.status}
+              {product.initialPrice}
             </Badge>
           </div>
           <CardBody>
@@ -42,16 +42,16 @@ const ImageListView = ({ product, isSelect, collect, onCheckItem }) => {
                 <CustomInput
                   className="item-check mb-0"
                   type="checkbox"
-                  id={`check_${product.id}`}
+                  id={`check_${product.serviceId}`}
                   checked={isSelect}
                   onChange={() => {}}
                   label=""
                 />
               </Colxx>
               <Colxx xxs="10" className="mb-3">
-                <CardSubtitle>{product.title}</CardSubtitle>
+                <CardSubtitle>{product.serviceName}</CardSubtitle>
                 <CardText className="text-muted text-small mb-0 font-weight-light">
-                  {product.date}
+                  {product.category}
                 </CardText>
               </Colxx>
             </Row>
