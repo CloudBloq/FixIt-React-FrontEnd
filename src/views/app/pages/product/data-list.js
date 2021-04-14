@@ -21,9 +21,9 @@ const getIndex = (value, arr, prop) => {
 const apiUrl = `${servicePath}/services`;
 
 const orderOptions = [
-  { column: 'title', label: 'Product Name' },
-  { column: 'category', label: 'Category' },
-  { column: 'status', label: 'Status' },
+  { column: 'ServiceName', label: 'Service Name' },
+  { column: 'Category', label: 'Category' },
+  { column: 'InitialPrice', label: 'Initial Price' },
 ];
 const pageSizes = [4, 8, 12, 20];
 
@@ -39,8 +39,8 @@ const DataListPages = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPageSize, setSelectedPageSize] = useState(8);
   const [selectedOrderOption, setSelectedOrderOption] = useState({
-    column: 'title',
-    label: 'Product Name',
+    column: 'ServiceName',
+    label: 'Service Name',
   });
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -68,7 +68,7 @@ const DataListPages = ({ match }) => {
         .then((data) => {
           setTotalPage(data.totalPage);
           setItems(
-            data.map((x) => {
+            data.service.map((x) => {
               return { ...x};
             })
           );
@@ -180,7 +180,12 @@ const DataListPages = ({ match }) => {
           itemsLength={items ? items.length : 0}
           onSearchKey={(e) => {
             if (e.key === 'Enter') {
-              setSearch(e.target.value.toLowerCase());
+              if(e.target.value.toLowerCase()===''){
+                setSearch('0');
+              }else{
+                setSearch(e.target.value.toLowerCase());
+              }
+             
             }
           }}
           orderOptions={orderOptions}

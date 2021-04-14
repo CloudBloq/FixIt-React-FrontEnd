@@ -14,6 +14,12 @@ import CustomSelectInput from '../../components/common/CustomSelectInput';
 import IntlMessages from '../../helpers/IntlMessages';
 
 const AddNewModal = ({ modalOpen, toggleModal, categories }) => {
+
+  function handleSubmit(){
+    console.log("Submit button ahve been clicked");
+    toggleModal();
+    // toggleModal=true;
+  }
   return (
     <Modal
       isOpen={modalOpen}
@@ -63,7 +69,7 @@ const AddNewModal = ({ modalOpen, toggleModal, categories }) => {
         <Button color="secondary" outline onClick={toggleModal}>
           <IntlMessages id="pages.cancel" />
         </Button>
-        <Button color="primary" onClick={toggleModal}>
+        <Button color="primary" onClick={handleSubmit}>
           <IntlMessages id="pages.submit" />
         </Button>{' '}
       </ModalFooter>
