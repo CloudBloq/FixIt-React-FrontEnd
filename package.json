@@ -14,7 +14,7 @@
     "classnames": "2.2.6",
     "firebase": "^8.2.2",
     "formik": "^2.2.6",
-    "moment": "2.29.1",
+    "moment": "2.29.2",
     "mousetrap": "^1.6.5",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
